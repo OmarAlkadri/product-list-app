@@ -1,0 +1,49 @@
+<div class="contenir">
+
+    <div class="card">
+        <div class="card__title">
+            <div class="icon">
+                <a href="/home/list"><mat-icon>keyboard_backspace</mat-icon></a>
+            </div>
+            <h3>New products</h3>
+        </div>
+        <div class="card__body">
+            <div class="half">
+                <div class="featured_text">
+                    <h1>{{data.name}}</h1>
+                    <p class="sub">{{data.productType}}</p>
+                    <p class="price">${{data.price}}</p>
+                </div>
+                <div class="image">
+                    <img src={{data.imageUrl}} alt="">
+                </div>
+            </div>
+            <div class="half">
+                <div class="description">
+                    <p>{{data.description}}</p>
+                </div>
+                <span class="stock"><i class="fa fa-pen"></i> {{data.visible?'In stock':''}}</span>
+                <div class="reviews">
+                    <ul class="stars">
+                        <li><i class="fa fa-star"></i></li>
+                        <li><i class="fa fa-star"></i></li>
+                        <li><i class="fa fa-star"></i></li>
+                        <li><i class="fa fa-star"></i></li>
+                        <li><i class="fa fa-star-o"></i></li>
+                    </ul>
+                    <span>({{data.upvote+data.downvote}} reviews)</span>
+                </div>
+            </div>
+        </div>
+        <div class="card__footer">
+            <div class="recommend">
+                <p>Recommended by</p>
+                <h3>Andrew Palmer</h3>
+            </div>
+            <div class="action">
+                <button type="button">Add to cart</button>
+            </div>
+        </div>
+    </div>
+
+</div>

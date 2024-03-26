@@ -1,0 +1,70 @@
+<div class="container">
+  <mat-card class="card">
+    <mat-card-header style="color: rgb(214, 21, 21)">
+      <mat-card-title>Product List</mat-card-title>
+    </mat-card-header>
+
+    <mat-card-content>
+
+      <mat-form-field>
+        <mat-label>Sorting</mat-label>
+        <mat-select (selectionChange)="onSelectChange($event)">
+          <mat-option value="upvote">up vote</mat-option>
+          <mat-option value="downvote">down vote</mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <ejs-grid #grid [resizeSettings]="{mode:'Auto'}" [allowResizing]='true' [dataSource]="data"
+        [editSettings]="editSettings" [toolbar]="toolbar" (toolbarClick)="clickHandler($event)" [allowPaging]="true"
+        [allowSorting]="true" [allowExcelExport]="true" [allowTextWrap]="true" [contextMenuItems]="contextMenuItems"
+        [allowFiltering]="true" [pageSettings]="pageOptions" [sortSettings]='initialSort'>
+
+        <e-columns>
+
+          <e-column headerText='Product Image' width='100' textAlign='Center'>
+            <ng-template #template let-data>
+              <div class="image">
+                <img src="{{data.imageUrl}}" height="50px" width="50px" alt="{{data.id}}" />
+              </div>
+            </ng-template>
+          </e-column>
+          <e-column field="name" headerText="name" width='100' textAlign="center"></e-column>
+          <e-column field="price" headerText="price" width='75' textAlign="center"></e-column>
+          <e-column field="upvote" headerText="upvote" width='75' textAlign="center"></e-column>
+          <e-column field="downvote" headerText="downvote" width='75' textAlign="center"></e-column>
+          <e-column field="limit" headerText="limit" width='55' textAlign="center"></e-column>
+          <e-column field="productType" headerText="productType" width='80' textAlign="center"></e-column>
+          <e-column field="visible" type='boolean' displayAsCheckBox='true' editType='booleanedit' headerText="visible"
+            width='50' textAlign="center"></e-column>
+          <e-column field="discount" headerText="discount" width='75' textAlign="center"></e-column>
+          <e-column headerText="Functions" textAlign="center">
+            <ng-template #template let-data>
+              <div>
+                <button (click)="upvoteProduct(data.id)" mat-icon-button class="example-icon delete-icon"
+                  aria-label="Example icon-button with heart icon">
+                  <mat-icon [ngStyle]="{'color': upvoteStyle(data.id)}">thumb_up</mat-icon>
+                </button>
+                <button (click)="downvoteProduct(data.id)" mat-icon-button class="example-icon delete-icon"
+                  aria-label="Example icon-button with heart icon">
+                  <mat-icon [ngStyle]="{'color': downvoteStyle(data.id)}">thumb_down</mat-icon>
+                </button>
+                <button (click)="openRemoveDialog(data.id)" mat-icon-button class="example-icon delete-icon"
+                  aria-label="Example icon-button with heart icon">
+                  <mat-icon>delete</mat-icon>
+                </button>
+                <button (click)="EditShipmentItem(data)" mat-icon-button class="example-icon edite-icon"
+                  aria-label="Example icon-button with heart icon">
+                  <mat-icon>edite</mat-icon>
+                </button>
+                <button (click)="openDetailsDialog(data)" mat-icon-button class="example-icon edite-icon"
+                  aria-label="Example icon-button with heart icon">
+                  <mat-icon>details</mat-icon>
+                </button>
+              </div>
+            </ng-template>
+          </e-column>
+        </e-columns>
+      </ejs-grid>
+    </mat-card-content>
+  </mat-card>
+</div>

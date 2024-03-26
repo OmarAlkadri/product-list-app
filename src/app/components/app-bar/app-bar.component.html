@@ -1,0 +1,31 @@
+<mat-toolbar color="primary">
+    <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
+        <mat-icon>menu</mat-icon>
+    </button>
+    <span (click)="navigate('home/list')" style="cursor: pointer;">
+        SMARTICT
+    </span>
+    <span class="example-spacer"></span>
+
+
+    <button (click)="navigate('home/product-list')" mat-stroked-button style="margin-left: 10px">
+        product list
+    </button>
+
+    <button (click)="navigate('home/product-adding')" mat-stroked-button style="margin-left: 10px">
+        product add
+    </button>
+
+    <button (click)="navigate('home/list')" mat-stroked-button style="margin-left: 10px">
+        home Page
+    </button>
+
+    <button (click)="navigate('home/list')" mat-icon-button class="example-icon"
+        aria-label="Example icon-button with share icon">
+        <mat-icon>home</mat-icon>
+    </button>
+
+    <button mat-icon-button class="example-icon" aria-label="Example icon-button with share icon">
+        <mat-icon>exit_to_app</mat-icon>
+    </button>
+</mat-toolbar>

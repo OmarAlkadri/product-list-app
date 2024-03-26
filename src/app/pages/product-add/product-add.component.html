@@ -1,0 +1,134 @@
+<div class="container" [formGroup]="productForm">
+  <mat-card class="card">
+    <mat-card-header style="color: rgb(214, 21, 21)">
+      <mat-card-title>Product List</mat-card-title>
+    </mat-card-header>
+
+    <mat-card-content>
+      <mat-grid-list cols="3" rowHeight="3:1">
+        <mat-grid-tile>
+          <mat-form-field appearance="fill" [class.mat-form-field-invalid]="
+              getFormItem('productType').invalid &&
+              (getFormItem('productType').dirty ||
+                getFormItem('productType').touched)
+            ">
+            <mat-label>Select an Package Type</mat-label>
+
+            <mat-select required formControlName="productType">
+              <mat-optgroup *ngFor="let item of productTypes" [label]="item.name">
+                <mat-option *ngFor="let type of item.types" [value]="type.value">
+                  {{ type.value }}
+                </mat-option>
+              </mat-optgroup>
+            </mat-select>
+            <mat-error *ngIf="getFormItem('productType').hasError('required')">
+              This field is required.
+            </mat-error>
+          </mat-form-field>
+        </mat-grid-tile>
+
+        <mat-grid-tile>
+          <mat-form-field appearance="fill" [class.mat-form-field-invalid]="
+              getFormItem('productName').invalid &&
+              (getFormItem('productName').dirty ||
+                getFormItem('productName').touched)
+            ">
+            <mat-label>Name</mat-label>
+            <input required matInput formControlName="productName" />
+            <mat-error *ngIf="getFormItem('productName').hasError('required')">
+              This field is required.
+            </mat-error>
+          </mat-form-field>
+        </mat-grid-tile>
+
+        <mat-grid-tile>
+          <mat-form-field appearance="fill" [class.mat-form-field-invalid]="
+              getFormItem('price').invalid &&
+              (getFormItem('price').dirty || getFormItem('price').touched)
+            ">
+            <mat-label>price</mat-label>
+            <input required matInput formControlName="price" />
+            <mat-error *ngIf="getFormItem('price').hasError('required')">
+              This field is required.
+            </mat-error>
+          </mat-form-field>
+        </mat-grid-tile>
+        <mat-grid-tile>
+          <mat-form-field appearance="fill" [class.mat-form-field-invalid]="
+              getFormItem('discount').invalid &&
+              (getFormItem('discount').dirty || getFormItem('discount').touched)
+            ">
+            <mat-label>discount</mat-label>
+            <input type="number" min="0" required matInput formControlName="discount" />
+
+            <mat-error *ngIf="getFormItem('discount').hasError('required')">
+              This field is required.
+            </mat-error>
+          </mat-form-field>
+        </mat-grid-tile>
+
+        <mat-grid-tile>
+          <mat-form-field appearance="fill" [class.mat-form-field-invalid]="
+              getFormItem('limit').invalid &&
+              (getFormItem('limit').dirty || getFormItem('limit').touched)
+            ">
+            <mat-label>limit</mat-label>
+            <input type="number" min="0" required matInput formControlName="limit" />
+
+            <mat-error *ngIf="getFormItem('limit').hasError('required')">
+              This field is required.
+            </mat-error>
+          </mat-form-field>
+        </mat-grid-tile>
+
+        <mat-grid-tile>
+          <mat-checkbox required matInput formControlName="visible">visible</mat-checkbox>
+        </mat-grid-tile>
+
+
+
+
+        <mat-grid-tile>
+          <input hidden type="file" accept="image/*" #file #fileInput (change)="selectFiles($event)" required />
+
+          <button mat-fab matTooltip="Primary" (click)="file.click()" color="primary"
+            aria-label="Example fab with a heart icon">
+            <mat-icon>cloud_upload</mat-icon>
+          </button>
+
+          <mat-error *ngIf="getFormItem('image').hasError('required')">
+            This field is required.
+          </mat-error>
+        </mat-grid-tile>
+        <mat-grid-tile [colspan]="1" [rowspan]="1">
+          <mat-form-field appearance="fill" [class.mat-form-field-invalid]="
+              getFormItem('description').invalid &&
+              (getFormItem('description').dirty ||
+                getFormItem('description').touched)
+            ">
+            <mat-label>description</mat-label>
+            <textarea required matInput formControlName="description"></textarea>
+            <mat-error *ngIf="getFormItem('description').hasError('required')">
+              This field is required.
+            </mat-error>
+          </mat-form-field>
+        </mat-grid-tile>
+      </mat-grid-list>
+      <div>
+        <img width="200" height="200" *ngIf="image.previews" [src]="image.previews" class="preview" />
+        <p>
+          {{ image.selectedFileName }}
+        </p>
+      </div>
+    </mat-card-content>
+
+    <mat-card-actions class="actionButton">
+      <button style="margin-right: 25px" mat-stroked-button (click)="onSave()" color="primary">
+        Save
+      </button>
+      <button mat-stroked-button (click)="onCancel()" color="warn">
+        Cancel
+      </button>
+    </mat-card-actions>
+  </mat-card>
+</div>

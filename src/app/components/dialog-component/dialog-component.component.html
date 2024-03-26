@@ -1,0 +1,12 @@
+<h2 mat-dialog-title>{{data.title}}</h2>
+<mat-dialog-content>
+    <div [innerHTML]="sanitizeHtml(data.content)"></div>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+    <div *ngFor="let action of data.actions">
+
+        <button mat-button [mat-dialog-close]="action.value" [color]="action.color">
+            {{ action.label }}
+        </button>
+    </div>
+</mat-dialog-actions>
