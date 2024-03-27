@@ -15,3 +15,22 @@ mat-drawer-content {
 .example-spacer {
     flex: 1 1 auto;
 }
+
+.menu-icon {
+    display: none;
+}
+
+.phone-list {
+    display: block;
+}
+
+@media screen and (max-width: 650px) {
+    .menu-icon {
+        display: block;
+
+    }
+
+    .phone-list {
+        display: none;
+    }
+}

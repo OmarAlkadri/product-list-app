@@ -16,3 +16,22 @@
     margin-top: 10px;
     margin-bottom: 15px;
 }
+
+
+.desktop-grid {
+    display: block;
+}
+
+.mobile-grid {
+    display: none;
+}
+
+@media (max-width: 651px) {
+    .desktop-grid {
+        display: none;
+    }
+
+    .mobile-grid {
+        display: block;
+    }
+}

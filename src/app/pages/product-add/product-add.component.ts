@@ -202,6 +202,7 @@ export class ProductAddComponent {
 
   onCancel() {
     this.productForm.reset();
+    this.image = {}
     this.data = null
   }
 
